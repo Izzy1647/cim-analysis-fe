@@ -37,6 +37,7 @@ const Statistics = (props) => {
           bottom: 5,
         }}
         barSize={20}
+        style={{margin: '10 auto'}}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
@@ -44,7 +45,7 @@ const Statistics = (props) => {
         <Tooltip />
         <Legend />
         <Bar dataKey="mark" fill="#42c97b" />
-      </BarChart>
+      </BarChart>      
     </>
   );
 };

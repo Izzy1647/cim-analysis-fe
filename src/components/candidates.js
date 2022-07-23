@@ -11,6 +11,7 @@ import Statistics from "./statistics";
 import Adam from "../adam.png";
 import Joe from "../joe.png";
 import Emily from "../emily.png";
+import Overview from "./overview";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -26,7 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Candidates = () => {
-  const [candidate, setCandidate] = React.useState("");
+  const [candidate, setCandidate] = React.useState("joe");
   const [joeStats, setJoeStats] = React.useState({});
   const [emilyStats, setEmilyStats] = React.useState({});
   const [adamStats, setAdamStats] = React.useState({});
@@ -68,24 +69,34 @@ const Candidates = () => {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1, padding: 2 }}>
-      <Grid container spacing={4}>
-        {list.map((item) => {
-          return (
-            <Grid item xs={4} key={item.key}>
-              <Item onClick={() => item.onclick()}>
-                <img height={300} src={item.img} alt="logo" />
-              </Item>
-            </Grid>
-          );
-        })}
-      </Grid>
-      {candidate === "joe" && <Statistics data={joeStats} candidate="Joe" />}
-      {candidate === "adam" && <Statistics data={adamStats} candidate="Adam" />}
-      {candidate === "emily" && (
-        <Statistics data={emilyStats} candidate="Emily" />
-      )}
-    </Box>
+    <>
+      <Box sx={{ flexGrow: 1, padding: 2 }}>
+        <Grid container spacing={4}>
+          {list.map((item) => {
+            return (
+              <Grid item xs={4} key={item.key}>
+                <Item onClick={() => item.onclick()}>
+                  <img height={300} src={item.img} alt="logo" />
+                </Item>
+              </Grid>
+            );
+          })}
+        </Grid>
+        {candidate === "joe" && <Statistics data={joeStats} candidate="Joe" />}
+        {candidate === "adam" && (
+          <Statistics data={adamStats} candidate="Adam" />
+        )}
+        {candidate === "emily" && (
+          <Statistics data={emilyStats} candidate="Emily" />
+        )}
+      </Box>
+
+      <div style={{ margin: "10 auto" }}>
+        <Overview
+          data={{ joe: joeStats, emily: emilyStats, adam: adamStats }}
+        />
+      </div>
+    </>
   );
 };
 
