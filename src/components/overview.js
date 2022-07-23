@@ -23,7 +23,7 @@ const Overview = (props) => {
   
   return (
     <>
-      <h3>Overview</h3>
+      <h3>Average score overview, marked by all players</h3>
       {/* <p>{JSON.stringify(chartData)}</p> */}
       <div style={{ margin: "0 auto" }}>
         <ResponsiveContainer
