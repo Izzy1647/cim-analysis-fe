@@ -4,16 +4,12 @@ import React from "react";
 import axios from "axios";
 import Candidates from "./components/candidates";
 
-export const baseURL = "https://cim-be.cyclic.app";
+export const baseURL = "https://rich-jade-gopher-cuff.cyclic.app";
 
 function App() {
   // const [data, setData] = React.useState(null);
 
-  // React.useEffect(() => {
-  //   axios.get(`${baseURL}/records`).then((response) => {
-  //     setData(response.data);
-  //   });
-  // }, []);
+
 
   // if (!data) return null;
 
