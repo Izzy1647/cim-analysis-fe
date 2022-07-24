@@ -2,7 +2,6 @@ import React from "react";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -14,21 +13,21 @@ import {
 const Overview = (props) => {
   const { data } = props;
   const chartData = Object.keys(data).map((key) => {
-    const scores = data[key]
+    const scores = data[key];
     return {
       name: key,
-      ...scores
-    }
-  })
-  
+      ...scores,
+    };
+  });
+
   return (
     <>
       <h3>Average score overview, marked by all players</h3>
       {/* <p>{JSON.stringify(chartData)}</p> */}
-      <div style={{ margin: "0 auto" }}>
+      <div style={{ width: "50%", margin: "0 auto" }}>
         <ResponsiveContainer
-          height={"50%"}
-          width={"50%"}
+          height={"100%"}
+          width={"100%"}
           aspect={2}
           minHeight={300}
           minWidth={200}
@@ -46,13 +45,12 @@ const Overview = (props) => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis />
+            <YAxis type="number" domain={[0, 5]} />
             <Tooltip />
             <Legend />
             <Bar dataKey="fizzbuzz" fill="#8884d8" />
             <Bar dataKey="twosum" fill="#82ca9d" />
             <Bar dataKey="lps" fill="#ed7672" />
-
           </BarChart>
         </ResponsiveContainer>
       </div>

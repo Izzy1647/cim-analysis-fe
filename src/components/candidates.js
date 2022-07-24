@@ -60,9 +60,11 @@ const Candidates = () => {
     axios.get(`${baseURL}/statistics/emily`).then((response) => {
       setEmilyStats(response.data);
     });
+
     axios.get(`${baseURL}/statistics/joe`).then((response) => {
       setJoeStats(response.data);
     });
+
     axios.get(`${baseURL}/statistics/adam`).then((response) => {
       setAdamStats(response.data);
     });
@@ -91,11 +93,7 @@ const Candidates = () => {
         )}
       </Box>
 
-      <div style={{ margin: "10 auto" }}>
-        <Overview
-          data={{ joe: joeStats, emily: emilyStats, adam: adamStats }}
-        />
-      </div>
+      <Overview data={{ joe: joeStats, emily: emilyStats, adam: adamStats }} />
     </>
   );
 };
