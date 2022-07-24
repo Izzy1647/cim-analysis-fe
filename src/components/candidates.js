@@ -12,6 +12,7 @@ import Adam from "../adam.png";
 import Joe from "../joe.png";
 import Emily from "../emily.png";
 import Overview from "./overview";
+import Count from "./count";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -31,6 +32,7 @@ const Candidates = () => {
   const [joeStats, setJoeStats] = React.useState({});
   const [emilyStats, setEmilyStats] = React.useState({});
   const [adamStats, setAdamStats] = React.useState({});
+  const [count, setCount] = React.useState({});
 
   const list = [
     {
@@ -68,6 +70,10 @@ const Candidates = () => {
     axios.get(`${baseURL}/statistics/adam`).then((response) => {
       setAdamStats(response.data);
     });
+
+    axios.get(`${baseURL}/records/count`).then((response) => {
+      setCount(response.data);
+    });
   }, []);
 
   return (
@@ -94,6 +100,8 @@ const Candidates = () => {
       </Box>
 
       <Overview data={{ joe: joeStats, emily: emilyStats, adam: adamStats }} />
+
+      {Array.isArray(count) && <Count data={count} />}
     </>
   );
 };
